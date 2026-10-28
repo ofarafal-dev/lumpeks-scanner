@@ -1,0 +1,1255 @@
+{
+  "version": 1,
+  "updated": "2026-10-28",
+  "brands": [
+    {
+      "name": "Barbour",
+      "aliases": [
+        "barbour",
+        "barbour international"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Woskowane kurtki i pikówki, bardzo dobrze się sprzedają.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Burberry",
+      "aliases": [
+        "burberry",
+        "burberrys",
+        "burberry london"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Trencze i szaliki w kratę, wysoka cena odsprzedaży.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Hackett",
+      "aliases": [
+        "hackett",
+        "hackett london"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Brytyjska klasyka męska, koszule i polówki schodzą dobrze.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Ted Baker",
+      "aliases": [
+        "ted baker",
+        "ted baker london"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Koszule i sukienki z charakterystycznymi wzorami, stały popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Fred Perry",
+      "aliases": [
+        "fred perry"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Polówki z laurem i dresowe bluzy, pewna sprzedaż.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Boden",
+      "aliases": [
+        "boden",
+        "mini boden",
+        "johnnie b"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Kolorowe ubrania damskie i dziecięce, dobra jakość bawełny.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Joules",
+      "aliases": [
+        "joules"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Brytyjski styl wiejski, kalosze i kurtki dobrze się sprzedają.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Jack Wills",
+      "aliases": [
+        "jack wills"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Bluzy i polówki z bażantem, popularne wśród młodszych.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Dr. Martens",
+      "aliases": [
+        "dr martens",
+        "doc martens",
+        "airwair",
+        "air wair",
+        "dr marten"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Glany i półbuty, nawet używane mają wysoką cenę.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Clarks",
+      "aliases": [
+        "clarks",
+        "clarks originals"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Desert boots i wallabee, solidna skóra, dobry popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Berghaus",
+      "aliases": [
+        "berghaus"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Kurtki outdoorowe i polary, sprawdź membranę i suwaki.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Karen Millen",
+      "aliases": [
+        "karen millen"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Elegancka odzież damska, płaszcze i sukienki sprzedają się dobrze.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Reiss",
+      "aliases": [
+        "reiss",
+        "reiss london"
+      ],
+      "country": "UK",
+      "rating": "green",
+      "note": "Premium high street, dobre tkaniny i krój.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Next",
+      "aliases": [
+        "next"
+      ],
+      "country": "UK",
+      "rating": "yellow",
+      "note": "Sieciówka średniej półki, opłaca się tylko w bardzo dobrym stanie.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "River Island",
+      "aliases": [
+        "river island"
+      ],
+      "country": "UK",
+      "rating": "yellow",
+      "note": "Modna sieciówka, niska cena odsprzedaży poza kurtkami.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Superdry",
+      "aliases": [
+        "superdry",
+        "superdry japan"
+      ],
+      "country": "UK",
+      "rating": "yellow",
+      "note": "Kurtki i bluzy schodzą, reszta raczej słabo.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Topshop",
+      "aliases": [
+        "topshop",
+        "topman"
+      ],
+      "country": "UK",
+      "rating": "yellow",
+      "note": "Jeansy Topshop mają popyt, reszta zależy od trendu.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Marks & Spencer",
+      "aliases": [
+        "marks spencer",
+        "marks and spencer",
+        "m s",
+        "autograph",
+        "per una",
+        "st michael"
+      ],
+      "country": "UK",
+      "rating": "yellow",
+      "note": "Dobra przy wełnie i kaszmirze, poza tym przeciętna.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Primark",
+      "aliases": [
+        "primark",
+        "atmosphere",
+        "denim co",
+        "cedarwood state",
+        "primark cares"
+      ],
+      "country": "UK",
+      "rating": "red",
+      "note": "Najtańsza sieciówka, praktycznie bez wartości odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "George",
+      "aliases": [
+        "george",
+        "george asda"
+      ],
+      "country": "UK",
+      "rating": "red",
+      "note": "Marka supermarketu Asda, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "F&F",
+      "aliases": [
+        "f f",
+        "florence fred",
+        "florence and fred"
+      ],
+      "country": "UK",
+      "rating": "red",
+      "note": "Marka supermarketu Tesco, bez wartości.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Peacocks",
+      "aliases": [
+        "peacocks"
+      ],
+      "country": "UK",
+      "rating": "red",
+      "note": "Tania brytyjska sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Sinsay",
+      "aliases": [
+        "sinsay"
+      ],
+      "country": "PL",
+      "rating": "red",
+      "note": "Najtańsza marka LPP, bez wartości odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Cropp",
+      "aliases": [
+        "cropp",
+        "cropp town"
+      ],
+      "country": "PL",
+      "rating": "red",
+      "note": "Młodzieżowa sieciówka LPP, niska wartość.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "House",
+      "aliases": [
+        "house",
+        "house brand"
+      ],
+      "country": "PL",
+      "rating": "red",
+      "note": "Sieciówka LPP, niska wartość odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Lacoste",
+      "aliases": [
+        "lacoste",
+        "lacoste live",
+        "chemise lacoste"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Polówki z krokodylem, bardzo dobry popyt — sprawdź oryginalność.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Sandro",
+      "aliases": [
+        "sandro",
+        "sandro paris"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Paryskie premium, sukienki i swetry dobrze się sprzedają.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Maje",
+      "aliases": [
+        "maje"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Francuskie premium damskie, wysoka cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "The Kooples",
+      "aliases": [
+        "the kooples",
+        "kooples"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Rockowa elegancja, skórzane kurtki szczególnie cenne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Zadig & Voltaire",
+      "aliases": [
+        "zadig voltaire",
+        "zadig et voltaire",
+        "zadig"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Kaszmirowe swetry i t-shirty, dobry popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Isabel Marant",
+      "aliases": [
+        "isabel marant",
+        "isabel marant etoile"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Projektantka, bardzo wysoka cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Comptoir des Cotonniers",
+      "aliases": [
+        "comptoir des cotonniers",
+        "comptoir"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Francuska klasyka damska, dobre tkaniny.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Claudie Pierlot",
+      "aliases": [
+        "claudie pierlot"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Paryskie premium damskie, siostra marek Sandro i Maje.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Ba&sh",
+      "aliases": [
+        "ba sh",
+        "bash",
+        "ba and sh"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Boho premium, sukienki sprzedają się bardzo dobrze.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Sézane",
+      "aliases": [
+        "sezane"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Kultowa marka online, swetry i bluzki mają duży popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "A.P.C.",
+      "aliases": [
+        "a p c",
+        "apc"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Minimalistyczne premium, surowy denim bardzo poszukiwany.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Kenzo",
+      "aliases": [
+        "kenzo",
+        "kenzo paris"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Bluzy z tygrysem, wysoka cena — sprawdź oryginalność.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Agnès b.",
+      "aliases": [
+        "agnes b",
+        "agnes b paris"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Francuski klasyk, kardigany ze zatrzaskami szczególnie cenne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Petit Bateau",
+      "aliases": [
+        "petit bateau"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Odzież dziecięca premium, świetnie się sprzedaje.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Saint James",
+      "aliases": [
+        "saint james"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Bretońskie swetry marynarskie, bardzo trwałe.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Aigle",
+      "aliases": [
+        "aigle"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Kalosze i kurtki outdoorowe, dobra jakość.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Longchamp",
+      "aliases": [
+        "longchamp",
+        "le pliage"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Torby Le Pliage, stały popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Repetto",
+      "aliases": [
+        "repetto"
+      ],
+      "country": "FR",
+      "rating": "green",
+      "note": "Baleriny premium, sprzedają się dobrze nawet używane.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Promod",
+      "aliases": [
+        "promod"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Średnia sieciówka damska, tylko w bardzo dobrym stanie.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Celio",
+      "aliases": [
+        "celio"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Męska sieciówka, niska cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Jules",
+      "aliases": [
+        "jules"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Męska sieciówka, opłaca się tylko jak nowe.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Etam",
+      "aliases": [
+        "etam"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Bielizna i odzież damska, przeciętna wartość.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Naf Naf",
+      "aliases": [
+        "naf naf",
+        "nafnaf"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Średnia półka damska, zależy od fasonu.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Morgan",
+      "aliases": [
+        "morgan",
+        "morgan de toi"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Damska sieciówka, wartość przeciętna.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Kookaï",
+      "aliases": [
+        "kookai"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Średnia półka damska, zależy od stanu.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "IKKS",
+      "aliases": [
+        "ikks"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Lepsza sieciówka, dziecięce i kurtki bywają opłacalne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Decathlon",
+      "aliases": [
+        "decathlon",
+        "quechua",
+        "kalenji",
+        "domyos",
+        "btwin",
+        "forclaz",
+        "wedze",
+        "kipsta",
+        "solognac",
+        "tribord"
+      ],
+      "country": "FR",
+      "rating": "yellow",
+      "note": "Sprzęt sportowy, opłacalny tylko technicznie sprawny i czysty.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Kiabi",
+      "aliases": [
+        "kiabi"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tania francuska sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Pimkie",
+      "aliases": [
+        "pimkie"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tania młodzieżowa sieciówka, bez wartości.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Cache Cache",
+      "aliases": [
+        "cache cache"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tania damska sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Bonobo",
+      "aliases": [
+        "bonobo",
+        "bonobo jeans"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tani denim, niska wartość.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Gémo",
+      "aliases": [
+        "gemo"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Dyskontowa sieć odzieżowa, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "La Halle",
+      "aliases": [
+        "la halle"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Dyskontowa sieć odzieżowa, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Jennyfer",
+      "aliases": [
+        "jennyfer"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tania młodzieżowa sieciówka, bez wartości.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Camaïeu",
+      "aliases": [
+        "camaieu"
+      ],
+      "country": "FR",
+      "rating": "red",
+      "note": "Tania damska sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Max Mara",
+      "aliases": [
+        "max mara",
+        "maxmara",
+        "s max mara",
+        "max mara studio"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Płaszcze wełniane i kaszmirowe, bardzo wysoka cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Weekend Max Mara",
+      "aliases": [
+        "weekend max mara",
+        "weekend maxmara"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Tańsza linia Max Mara, płaszcze nadal bardzo opłacalne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Marella",
+      "aliases": [
+        "marella"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Linia z grupy Max Mara, dobre płaszcze i garnitury.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Pinko",
+      "aliases": [
+        "pinko"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Włoskie premium damskie, torebki i sukienki dobrze schodzą.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Liu Jo",
+      "aliases": [
+        "liu jo",
+        "liujo"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Włoska moda damska, jeansy i torebki mają popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Patrizia Pepe",
+      "aliases": [
+        "patrizia pepe"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Florenckie premium damskie, dobra cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Twinset",
+      "aliases": [
+        "twinset",
+        "twin set",
+        "twinset milano"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Włoskie dzianiny i sukienki, dobry popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Diesel",
+      "aliases": [
+        "diesel",
+        "diesel industry",
+        "only the brave"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Jeansy i kurtki, dobra sprzedaż — sprawdź oryginalność.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Replay",
+      "aliases": [
+        "replay"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Dobry włoski denim, jeansy sprzedają się dobrze.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Emporio Armani",
+      "aliases": [
+        "emporio armani",
+        "ea7"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Średnia linia Armani, dobra cena — często podrabiana.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Armani Jeans",
+      "aliases": [
+        "armani jeans"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Dawna dżinsowa linia Armani, popularna — często podrabiana.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Giorgio Armani",
+      "aliases": [
+        "giorgio armani",
+        "armani",
+        "armani collezioni"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Główna linia Armani, bardzo wysoka wartość — sprawdź oryginalność.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Armani Exchange",
+      "aliases": [
+        "armani exchange",
+        "a x armani exchange"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Najtańsza linia Armani, wartość umiarkowana — często podrabiana.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Stone Island",
+      "aliases": [
+        "stone island"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Kultowa marka z naszywką kompasu, bardzo wysoka cena — dużo podróbek.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "C.P. Company",
+      "aliases": [
+        "c p company",
+        "cp company"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Kurtki i bluzy z goglami, wysoka cena odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Moncler",
+      "aliases": [
+        "moncler"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Kurtki puchowe premium, bardzo wysoka cena — najczęściej podrabiana.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Napapijri",
+      "aliases": [
+        "napapijri"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Kurtki Skidoo i outdoor, dobry popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Falconeri",
+      "aliases": [
+        "falconeri"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Kaszmir i dzianiny premium z grupy Calzedonia, bardzo opłacalne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Boggi",
+      "aliases": [
+        "boggi",
+        "boggi milano"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Włoska elegancja męska, marynarki i koszule dobrze schodzą.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Zegna",
+      "aliases": [
+        "zegna",
+        "ermenegildo zegna",
+        "z zegna"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Luksusowe tkaniny męskie, garnitury i swetry bardzo cenne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Tod's",
+      "aliases": [
+        "tods",
+        "tod s"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Mokasyny luksusowe, wysoka cena nawet używanych.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Hogan",
+      "aliases": [
+        "hogan"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Włoskie sneakersy premium, dobra odsprzedaż.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Furla",
+      "aliases": [
+        "furla"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Torebki skórzane, stały popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Sergio Tacchini",
+      "aliases": [
+        "sergio tacchini"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Retro dresy i polówki, vintage ma popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Ellesse",
+      "aliases": [
+        "ellesse"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Retro sportswear, bluzy i kurtki dobrze się sprzedają.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Fila",
+      "aliases": [
+        "fila"
+      ],
+      "country": "IT",
+      "rating": "green",
+      "note": "Retro sport, vintage i buty mają popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Benetton",
+      "aliases": [
+        "benetton",
+        "united colors of benetton"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Swetry wełniane bywają opłacalne, reszta przeciętna.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Sisley",
+      "aliases": [
+        "sisley"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Linia z grupy Benetton, wartość średnia.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Geox",
+      "aliases": [
+        "geox",
+        "geox respira"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Buty wygodne, opłaca się tylko mało zniszczone.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Kappa",
+      "aliases": [
+        "kappa"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Sport retro, popyt zależy od modelu.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Lotto",
+      "aliases": [
+        "lotto"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Sport retro, średnia wartość.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Diadora",
+      "aliases": [
+        "diadora",
+        "diadora heritage"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Buty Heritage cenne, reszta przeciętna.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Superga",
+      "aliases": [
+        "superga"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Tenisówki, opłaca się tylko w dobrym stanie.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Motivi",
+      "aliases": [
+        "motivi"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Włoska sieciówka damska, wartość średnia.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Elena Mirò",
+      "aliases": [
+        "elena miro"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Moda damska plus size, zależy od stanu i tkaniny.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Imperial",
+      "aliases": [
+        "imperial",
+        "imperial fashion"
+      ],
+      "country": "IT",
+      "rating": "yellow",
+      "note": "Włoska szybka moda, wartość umiarkowana.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "OVS",
+      "aliases": [
+        "ovs",
+        "oviesse"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Tania włoska sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Terranova",
+      "aliases": [
+        "terranova"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Tania młodzieżowa sieciówka, bez wartości.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Piazza Italia",
+      "aliases": [
+        "piazza italia"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Tania sieciówka, nie warto.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Calzedonia",
+      "aliases": [
+        "calzedonia"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Rajstopy i stroje kąpielowe, niska wartość z drugiej ręki.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Intimissimi",
+      "aliases": [
+        "intimissimi"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Bielizna, z drugiej ręki praktycznie się nie sprzedaje.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Yamamay",
+      "aliases": [
+        "yamamay"
+      ],
+      "country": "IT",
+      "rating": "red",
+      "note": "Bielizna, bez wartości odsprzedaży.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Hugo Boss",
+      "aliases": [
+        "hugo boss",
+        "boss",
+        "hugo",
+        "boss orange",
+        "boss black"
+      ],
+      "country": "DE",
+      "rating": "green",
+      "note": "Garnitury, koszule i płaszcze, bardzo dobry popyt.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Marc O'Polo",
+      "aliases": [
+        "marc o polo",
+        "marc opolo",
+        "marco polo"
+      ],
+      "country": "DE",
+      "rating": "green",
+      "note": "Dobra bawełna i dzianiny, solidna sprzedaż.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Adidas",
+      "aliases": [
+        "adidas",
+        "adidas originals"
+      ],
+      "country": "DE",
+      "rating": "yellow",
+      "note": "Zależy od modelu: retro bluzy i kultowe buty tak, zwykły sport nie.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Tommy Hilfiger",
+      "aliases": [
+        "tommy hilfiger",
+        "hilfiger",
+        "tommy jeans",
+        "hilfiger denim"
+      ],
+      "country": "US",
+      "rating": "green",
+      "note": "Popularna marka, koszule i swetry dobrze się sprzedają.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Levi's",
+      "aliases": [
+        "levis",
+        "levi s",
+        "levi strauss"
+      ],
+      "country": "US",
+      "rating": "green",
+      "note": "Jeansy 501 i vintage bardzo poszukiwane, sprawdź model.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Ralph Lauren",
+      "aliases": [
+        "ralph lauren",
+        "polo ralph lauren",
+        "lauren ralph lauren",
+        "polo by ralph lauren"
+      ],
+      "country": "US",
+      "rating": "green",
+      "note": "Koszule, swetry i polówki, bardzo dobry popyt — dużo podróbek.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Calvin Klein",
+      "aliases": [
+        "calvin klein",
+        "ck jeans",
+        "calvin klein jeans"
+      ],
+      "country": "US",
+      "rating": "yellow",
+      "note": "Popularna, ale wartość zależy od linii i stanu.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Nike",
+      "aliases": [
+        "nike"
+      ],
+      "country": "US",
+      "rating": "yellow",
+      "note": "Zależy od modelu: vintage i kultowe buty tak, zwykły sport nie.",
+      "counterfeit_warning": true
+    },
+    {
+      "name": "Gant",
+      "aliases": [
+        "gant"
+      ],
+      "country": "SE",
+      "rating": "green",
+      "note": "Koszule oxford i swetry, solidna sprzedaż.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Peak Performance",
+      "aliases": [
+        "peak performance"
+      ],
+      "country": "SE",
+      "rating": "green",
+      "note": "Szwedzki outdoor premium, kurtki bardzo opłacalne.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "H&M",
+      "aliases": [
+        "h m",
+        "hm",
+        "h and m"
+      ],
+      "country": "SE",
+      "rating": "red",
+      "note": "Szybka moda, nie warto (wyjątek: kolekcje designerskie i H&M Studio).",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Zara",
+      "aliases": [
+        "zara",
+        "zara woman",
+        "zara man"
+      ],
+      "country": "ES",
+      "rating": "yellow",
+      "note": "Opłaca się tylko jak nowa lub modny fason sezonu.",
+      "counterfeit_warning": false
+    },
+    {
+      "name": "Reserved",
+      "aliases": [
+        "reserved"
+      ],
+      "country": "PL",
+      "rating": "red",
+      "note": "Polska sieciówka LPP, niska wartość odsprzedaży.",
+      "counterfeit_warning": false
+    }
+  ]
+}
