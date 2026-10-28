@@ -36,6 +36,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.ofarafal.lumpeksscanner.ui.CameraScreen
 import dev.ofarafal.lumpeksscanner.ui.ResultScreen
+import dev.ofarafal.lumpeksscanner.ui.UpdateDialog
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +74,15 @@ fun LumpeksApp(vm: ScannerViewModel = viewModel()) {
     }
 
     BackHandler(enabled = vm.state !is UiState.Camera) { vm.backToCamera() }
+
+    vm.availableUpdate?.let { update ->
+        UpdateDialog(
+            update = update,
+            state = vm.downloadState,
+            onDownload = vm::downloadAndInstall,
+            onDismiss = vm::dismissUpdate,
+        )
+    }
 
     Scaffold(snackbarHost = { SnackbarHost(snackbar) }) { padding ->
         Box(Modifier.fillMaxSize().padding(padding)) {
