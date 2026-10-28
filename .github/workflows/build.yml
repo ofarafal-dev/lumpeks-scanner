@@ -1,0 +1,52 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "data/**"
+      - "*.gradle.kts"
+      - "gradle.properties"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Walidacja bazy marek
+        run: python3 .github/scripts/validate_brands.py data/brands.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+
+      - name: Budowanie APK (debug)
+        run: gradle :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Zmiana nazwy APK
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/debug/app-debug.apk "dist/lumpeks-scanner-${{ github.run_number }}.apk"
+
+      - name: Publikacja w GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Lumpeks Scanner build ${{ github.run_number }}
+          body: |
+            Automatyczny build z commita ${{ github.sha }}.
+            APK debug (podpis kluczem debug z CI).
+          files: dist/*.apk
+          prerelease: true
