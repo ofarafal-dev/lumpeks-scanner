@@ -21,6 +21,8 @@ data class Brand(
     val rating: Rating,
     val note: String,
     val counterfeitWarning: Boolean,
+    /** Opcjonalna krótka wskazówka, np. "bierz Polo/oxford, Made in USA". */
+    val tip: String? = null,
 )
 
 data class BrandDatabase(
@@ -47,6 +49,7 @@ data class BrandDatabase(
                     rating = Rating.from(o.getString("rating")),
                     note = o.optString("note", ""),
                     counterfeitWarning = o.optBoolean("counterfeit_warning", false),
+                    tip = o.optString("tip", "").trim().ifEmpty { null },
                 )
             }
             return BrandDatabase(
