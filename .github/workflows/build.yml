@@ -32,21 +32,50 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - name: Budowanie APK (debug)
-        run: gradle :app:assembleDebug --no-daemon --stacktrace
-
-      - name: Zmiana nazwy APK
+      - name: Odtworzenie keystore z sekretu
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::Brak sekretu KEYSTORE_BASE64 — nie zbuduję podpisanego release."
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 --decode --ignore-garbage > "$RUNNER_TEMP/release.jks"
+          echo "KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Budowanie APK (release, minify + shrink)
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle :app:assembleRelease --no-daemon --stacktrace
+
+      - name: Weryfikacja podpisu
+        run: |
+          APK=app/build/outputs/apk/release/app-release.apk
+          BT=$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -1)
+          "$ANDROID_HOME/build-tools/$BT/apksigner" verify --print-certs "$APK" | tee signer.txt
+          if grep -qi "CN=Android Debug" signer.txt; then
+            echo "::error::APK podpisany kluczem debug — sprawdź sekrety."
+            exit 1
+          fi
           mkdir -p dist
-          cp app/build/outputs/apk/debug/app-debug.apk "dist/lumpeks-scanner-${{ github.run_number }}.apk"
+          cp "$APK" dist/lumpeks-scanner.apk
+          echo "SIGNER_SHA256=$(grep -i 'SHA-256' signer.txt | head -1 | awk '{print $NF}')" >> "$GITHUB_ENV"
+
+      - name: Usunięcie keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/release.jks"
 
       - name: Publikacja w GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Lumpeks Scanner build ${{ github.run_number }}
+          name: Lumpeks Scanner 1.0.${{ github.run_number }}
           body: |
-            Automatyczny build z commita ${{ github.sha }}.
-            APK debug (podpis kluczem debug z CI).
-          files: dist/*.apk
-          prerelease: true
+            Wersja **1.0.${{ github.run_number }}** (build ${{ github.run_number }}, versionCode ${{ github.run_number }})
+            Commit: ${{ github.sha }}
+            APK release, podpisany stałym kluczem (SHA-256 certyfikatu: `${{ env.SIGNER_SHA256 }}`).
+          files: dist/lumpeks-scanner.apk
+          prerelease: false
+          make_latest: "true"
