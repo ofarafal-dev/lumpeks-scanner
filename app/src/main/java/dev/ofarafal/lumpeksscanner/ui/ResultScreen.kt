@@ -1,6 +1,14 @@
 package dev.ofarafal.lumpeksscanner.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -65,25 +73,44 @@ fun ResultScreen(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(color, RoundedCornerShape(16.dp))
-                .padding(20.dp),
+        Row(
+            modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Text(verdict, color = Color.White, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-            Text(
-                brand?.name ?: "Nie rozpoznano marki",
-                color = Color.White,
-                style = MaterialTheme.typography.titleLarge,
-            )
-            if (brand != null && brand.country.isNotBlank()) {
-                Text("Pochodzenie marki: ${brand.country}", color = Color.White)
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .background(color, RoundedCornerShape(16.dp))
+                    .padding(20.dp),
+            ) {
+                Text(verdict, color = Color.White, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+                Text(
+                    brand?.name ?: "Nie rozpoznano marki",
+                    color = Color.White,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                if (brand != null && brand.country.isNotBlank()) {
+                    Text("Pochodzenie marki: ${brand.country}", color = Color.White)
+                }
+            }
+            if (brand?.counterfeitWarning == true) {
+                CounterfeitBadge(Modifier.fillMaxHeight())
             }
         }
 
         if (brand != null) {
             Text(brand.note, style = MaterialTheme.typography.bodyLarge)
+            brand.tip?.let { tip ->
+                Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFE3F2FD))) {
+                    Text(
+                        "💡 $tip",
+                        modifier = Modifier.padding(12.dp),
+                        color = Color(0xFF0D2A4A),
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                }
+            }
         }
         when {
             scan.manual -> Text("Marka wybrana ręcznie", style = MaterialTheme.typography.labelMedium)
@@ -91,14 +118,11 @@ fun ResultScreen(
         }
 
         if (brand?.counterfeitWarning == true) {
-            Card(colors = CardDefaults.cardColors(containerColor = Color(0xFFFFE0B2))) {
-                Text(
-                    "⚠️ Marka często podrabiana. Sprawdź szwy, metki wewnętrzne, jakość okuć i guzików, " +
-                        "kody/hologramy oraz czy cena i miejsce produkcji pasują do marki.",
-                    modifier = Modifier.padding(12.dp),
-                    color = Color(0xFF4E2600),
-                )
-            }
+            Text(
+                "Marka często podrabiana: sprawdź szwy, metki wewnętrzne, okucia i guziki, kody/hologramy " +
+                    "oraz czy kraj produkcji pasuje do marki.",
+                style = MaterialTheme.typography.bodySmall,
+            )
         }
 
         HorizontalDivider()
@@ -123,12 +147,7 @@ fun ResultScreen(
             Button(onClick = onScanAgain) { Text("Skanuj dalej") }
         }
 
-        TextButton(onClick = { showRaw = !showRaw }) {
-            Text(if (showRaw) "Ukryj odczytany tekst" else "Pokaż odczytany tekst (OCR)")
-        }
-        if (showRaw) {
-            Text(scan.rawText.ifBlank { "(pusto)" }, fontFamily = FontFamily.Monospace, style = MaterialTheme.typography.bodySmall)
-        }
+        OcrDebugPanel(scan = scan, expanded = showRaw, onToggle = { showRaw = !showRaw })
     }
 
     if (showPicker) {
@@ -140,6 +159,64 @@ fun ResultScreen(
                 onCorrectBrand(it)
             },
         )
+    }
+}
+
+@Composable
+private fun CounterfeitBadge(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .width(96.dp)
+            .background(Color(0xFFFFE0B2), RoundedCornerShape(16.dp))
+            .border(2.dp, Color(0xFFEF6C00), RoundedCornerShape(16.dp))
+            .padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text("⚠️", style = MaterialTheme.typography.headlineSmall)
+        Text(
+            "Sprawdź autentyczność",
+            color = Color(0xFF4E2600),
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+/** Rozwijany panel do strojenia: surowy tekst OCR + wszystkie dopasowane aliasy z odległością. */
+@Composable
+private fun OcrDebugPanel(scan: ScanResult, expanded: Boolean, onToggle: () -> Unit) {
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            TextButton(onClick = onToggle) {
+                Text(if (expanded) "▲ Ukryj odczytany tekst" else "▼ Pokaż odczytany tekst")
+            }
+            if (expanded) {
+                Text("Dopasowania aliasów", style = MaterialTheme.typography.titleSmall)
+                if (scan.candidates.isEmpty()) {
+                    Text("Żaden alias nie przeszedł progu.", style = MaterialTheme.typography.bodySmall)
+                } else {
+                    scan.candidates.forEachIndexed { i, c ->
+                        Text(
+                            "${i + 1}. ${c.brand.name} ← alias „${c.alias}” w tekście „${c.matchedText}” " +
+                                "(błędy ${c.distance}/${c.tolerance}, wynik ${c.score.toInt()})",
+                            style = MaterialTheme.typography.bodySmall,
+                            fontFamily = FontFamily.Monospace,
+                        )
+                    }
+                }
+                HorizontalDivider()
+                Text("Surowy tekst OCR", style = MaterialTheme.typography.titleSmall)
+                SelectionContainer {
+                    Text(
+                        scan.rawText.ifBlank { "(pusto)" },
+                        fontFamily = FontFamily.Monospace,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+        }
     }
 }
 
