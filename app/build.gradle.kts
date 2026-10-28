@@ -6,6 +6,15 @@ plugins {
 
 val buildNumber = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
 
+// Podpis release ze zmiennych środowiskowych (w CI ustawia je build.yml z GitHub Secrets).
+// Brak zmiennych (build lokalny) → release podpisany kluczem debug.
+val keystorePath: String? = System.getenv("KEYSTORE_PATH")
+val keystorePassword: String? = System.getenv("KEYSTORE_PASSWORD")
+val releaseKeyAlias: String? = System.getenv("KEY_ALIAS")
+val releaseKeyPassword: String? = System.getenv("KEY_PASSWORD")
+val hasReleaseKey = listOf(keystorePath, keystorePassword, releaseKeyAlias, releaseKeyPassword)
+    .all { !it.isNullOrBlank() } && file(keystorePath!!).exists()
+
 android {
     namespace = "dev.ofarafal.lumpeksscanner"
     compileSdk = 34
@@ -15,17 +24,44 @@ android {
         minSdk = 26
         targetSdk = 34
         versionCode = buildNumber
-        versionName = "0.1.$buildNumber"
+        versionName = "1.0.$buildNumber"
         buildConfigField(
             "String",
             "BRANDS_URL",
             "\"https://raw.githubusercontent.com/ofarafal-dev/lumpeks-scanner/main/data/brands.json\""
         )
+        buildConfigField(
+            "String",
+            "RELEASES_URL",
+            "\"https://api.github.com/repos/ofarafal-dev/lumpeks-scanner/releases/latest\""
+        )
+    }
+
+    signingConfigs {
+        create("release") {
+            if (hasReleaseKey) {
+                storeFile = file(keystorePath!!)
+                storePassword = keystorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                logger.warn("Brak KEYSTORE_* — release podpisany kluczem debug")
+                signingConfigs.getByName("debug")
+            }
         }
     }
 
