@@ -36,6 +36,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.ofarafal.lumpeksscanner.ui.CameraScreen
 import dev.ofarafal.lumpeksscanner.ui.ResultScreen
+import dev.ofarafal.lumpeksscanner.ui.SettingsScreen
 import dev.ofarafal.lumpeksscanner.ui.UpdateDialog
 
 class MainActivity : ComponentActivity() {
@@ -73,7 +74,8 @@ fun LumpeksApp(vm: ScannerViewModel = viewModel()) {
         vm.updateMessage?.let { snackbar.showSnackbar(it) }
     }
 
-    BackHandler(enabled = vm.state !is UiState.Camera) { vm.backToCamera() }
+    BackHandler(enabled = vm.state !is UiState.Camera && !vm.showSettings) { vm.backToCamera() }
+    BackHandler(enabled = vm.showSettings) { vm.closeSettings() }
 
     vm.availableUpdate?.let { update ->
         UpdateDialog(
@@ -86,10 +88,12 @@ fun LumpeksApp(vm: ScannerViewModel = viewModel()) {
 
     Scaffold(snackbarHost = { SnackbarHost(snackbar) }) { padding ->
         Box(Modifier.fillMaxSize().padding(padding)) {
-            when (val state = vm.state) {
+            if (vm.showSettings) {
+                SettingsScreen(vm = vm, onBack = vm::closeSettings)
+            } else when (val state = vm.state) {
                 UiState.Camera ->
                     if (hasCamera) {
-                        CameraScreen(onCaptured = vm::onPhoto)
+                        CameraScreen(onCaptured = vm::onPhoto, onOpenSettings = vm::openSettings)
                     } else {
                         CenteredMessage(
                             text = "Aplikacja potrzebuje dostępu do aparatu, żeby czytać metki.",
