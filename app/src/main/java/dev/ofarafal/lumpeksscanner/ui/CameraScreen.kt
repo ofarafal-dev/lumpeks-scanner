@@ -14,7 +14,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,7 +39,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 
 @Composable
-fun CameraScreen(onCaptured: (Bitmap, Int) -> Unit) {
+fun CameraScreen(onCaptured: (Bitmap, Int) -> Unit, onOpenSettings: () -> Unit) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val imageCapture = remember {
@@ -84,6 +89,16 @@ fun CameraScreen(onCaptured: (Bitmap, Int) -> Unit) {
                 .background(Color(0x99000000))
                 .padding(12.dp),
         )
+
+        IconButton(
+            onClick = onOpenSettings,
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(start = 24.dp, bottom = 32.dp)
+                .background(Color(0x99000000), CircleShape),
+        ) {
+            Icon(Icons.Filled.Settings, contentDescription = "Ustawienia", tint = Color.White)
+        }
 
         Button(
             enabled = !busy,
