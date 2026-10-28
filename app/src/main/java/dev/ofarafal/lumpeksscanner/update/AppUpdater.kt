@@ -23,6 +23,12 @@ data class AppUpdate(
     val pageUrl: String,
 )
 
+sealed interface UpdateCheck {
+    data class Available(val update: AppUpdate) : UpdateCheck
+    data class UpToDate(val latestBuild: Int) : UpdateCheck
+    data class Failed(val reason: String) : UpdateCheck
+}
+
 sealed interface DownloadState {
     data class Running(val downloadedBytes: Long, val totalBytes: Long) : DownloadState
     data class Done(val file: File) : DownloadState
@@ -37,8 +43,11 @@ sealed interface DownloadState {
 class AppUpdater(private val context: Context) {
 
     /** Nowsza wersja albo null (brak sieci, błąd API, brak nowszej wersji — bez komunikatu). */
-    suspend fun check(): AppUpdate? = withContext(Dispatchers.IO) {
-        runCatching {
+    suspend fun check(): AppUpdate? = (checkDetailed() as? UpdateCheck.Available)?.update
+
+    /** Pełny wynik sprawdzenia — używany przy ręcznym sprawdzaniu z ekranu ustawień. */
+    suspend fun checkDetailed(): UpdateCheck = withContext(Dispatchers.IO) {
+        try {
             val connection = (URL(BuildConfig.RELEASES_URL).openConnection() as HttpURLConnection).apply {
                 connectTimeout = TIMEOUT_MS
                 readTimeout = TIMEOUT_MS
@@ -47,28 +56,40 @@ class AppUpdater(private val context: Context) {
                 setRequestProperty("User-Agent", "lumpeks-scanner/${BuildConfig.VERSION_NAME}")
             }
             try {
-                if (connection.responseCode != HttpURLConnection.HTTP_OK) return@runCatching null
+                val code = connection.responseCode
+                if (code != HttpURLConnection.HTTP_OK) {
+                    return@withContext UpdateCheck.Failed(
+                        if (code == 403 || code == 429) "Limit zapytań GitHub — spróbuj za godzinę" else "GitHub zwrócił HTTP $code"
+                    )
+                }
                 val json = JSONObject(connection.inputStream.bufferedReader().use { it.readText() })
                 val build = json.optString("tag_name").removePrefix("build-").toIntOrNull()
-                    ?: return@runCatching null
-                if (build <= BuildConfig.VERSION_CODE) return@runCatching null
-                val assets = json.optJSONArray("assets") ?: return@runCatching null
-                val apkUrl = (0 until assets.length())
-                    .map { assets.getJSONObject(it) }
-                    .firstOrNull { it.optString("name") == APK_NAME }
-                    ?.optString("browser_download_url")
-                    ?.takeIf { it.isNotBlank() }
-                    ?: return@runCatching null
-                AppUpdate(
-                    build = build,
-                    versionName = "1.0.$build",
-                    apkUrl = apkUrl,
-                    pageUrl = json.optString("html_url"),
+                    ?: return@withContext UpdateCheck.Failed("Nieznany format wersji w release")
+                if (build <= BuildConfig.VERSION_CODE) return@withContext UpdateCheck.UpToDate(build)
+                val assets = json.optJSONArray("assets")
+                val apkUrl = assets?.let { a ->
+                    (0 until a.length())
+                        .map { a.getJSONObject(it) }
+                        .firstOrNull { it.optString("name") == APK_NAME }
+                        ?.optString("browser_download_url")
+                        ?.takeIf { it.isNotBlank() }
+                } ?: return@withContext UpdateCheck.Failed("Release nie zawiera pliku $APK_NAME")
+                UpdateCheck.Available(
+                    AppUpdate(
+                        build = build,
+                        versionName = "1.0.$build",
+                        apkUrl = apkUrl,
+                        pageUrl = json.optString("html_url"),
+                    )
                 )
             } finally {
                 connection.disconnect()
             }
-        }.getOrNull()
+        } catch (e: java.io.IOException) {
+            UpdateCheck.Failed("Brak połączenia z internetem")
+        } catch (e: Exception) {
+            UpdateCheck.Failed("Błąd: ${e.message ?: e.javaClass.simpleName}")
+        }
     }
 
     /** Pobiera APK przez DownloadManager i emituje postęp do [onProgress]. */
