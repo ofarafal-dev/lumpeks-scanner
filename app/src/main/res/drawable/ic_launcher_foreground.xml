@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Metka ubrania z kropkami 🟢🟡🔴 w ramce skanera + linia skanowania -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="0.82"
+        android:scaleY="0.82">
+        <!-- Narożniki ramki skanera -->
+        <path
+            android:pathData="M28,36 V30 A2,2 0 0 1 30,28 H36 M72,28 H78 A2,2 0 0 1 80,30 V36 M80,72 V78 A2,2 0 0 1 78,80 H72 M36,80 H30 A2,2 0 0 1 28,78 V72"
+            android:strokeWidth="3"
+            android:strokeColor="#FFFFFFFF"
+            android:strokeAlpha="0.9"
+            android:strokeLineCap="round" />
+        <group
+            android:pivotX="54"
+            android:pivotY="56"
+            android:rotation="-14">
+            <!-- Sznurek -->
+            <path
+                android:pathData="M54,44 C55,36 61,31 69,31"
+                android:strokeWidth="2"
+                android:strokeColor="#FFFFE082"
+                android:strokeLineCap="round" />
+            <!-- Metka -->
+            <path
+                android:pathData="M44,45 L54,36 L64,45 L64,73 Q64,75 62,75 L46,75 Q44,75 44,73 Z"
+                android:fillColor="#FFFFF8E1"
+                android:strokeWidth="2"
+                android:strokeColor="#FFFFF8E1"
+                android:strokeLineJoin="round" />
+            <!-- Dziurka -->
+            <path
+                android:pathData="M51.4,44 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0"
+                android:fillColor="#FF00695C" />
+            <!-- Ocena: zielona / żółta / czerwona -->
+            <path
+                android:pathData="M44.8,60 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0"
+                android:fillColor="#FF43A047" />
+            <path
+                android:pathData="M50.8,60 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0"
+                android:fillColor="#FFFDD835" />
+            <path
+                android:pathData="M56.8,60 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0"
+                android:fillColor="#FFE53935" />
+            <!-- Linia tekstu -->
+            <path
+                android:pathData="M48,67 h12 a1,1 0 0 1 0,2 h-12 a1,1 0 0 1 0,-2 z"
+                android:fillColor="#FFB0BEC5" />
+        </group>
+        <!-- Linia skanowania -->
+        <path
+            android:pathData="M31.8,52.5 h44.4 a0.8,0.8 0 0 1 0,1.6 h-44.4 a0.8,0.8 0 0 1 0,-1.6 z"
+            android:fillColor="#FF80DEEA"
+            android:fillAlpha="0.85" />
+    </group>
+</vector>
