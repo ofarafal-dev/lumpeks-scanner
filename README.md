@@ -85,6 +85,11 @@ instalator (FileProvider + `REQUEST_INSTALL_PACKAGES`). **Instalację zawsze zat
 Za pierwszym razem Android poprosi o zgodę „Instaluj nieznane aplikacje” dla Lumpeks Scannera — po jej
 włączeniu wróć i naciśnij **„Zainstaluj”**. Brak internetu lub błąd API = sprawdzenie pomijane po cichu.
 
+**Ekran Ustawienia** (ikona ⚙️ w lewym dolnym rogu ekranu aparatu):
+- wersja aplikacji i przycisk **„Sprawdź aktualizację”** (pokazuje „Masz najnowszą wersję” albo dialog pobierania),
+- przełącznik **„Sprawdzaj przy starcie”** (domyślnie włączony),
+- wersja, data i liczba marek w bazie + przycisk **„Aktualizuj bazę teraz”**.
+
 Aktualizacja działa tylko między wersjami podpisanymi tym samym kluczem (patrz niżej).
 
 ## Jak zbudować APK
