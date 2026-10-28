@@ -15,6 +15,12 @@ import java.net.URL
  *  3. przy starcie aplikacja próbuje pobrać nowszą wersję z GitHuba.
  * Używana jest zawsze wersja z najwyższym polem "version".
  */
+sealed interface BrandUpdate {
+    data class Updated(val database: BrandDatabase) : BrandUpdate
+    data class UpToDate(val remoteVersion: Int) : BrandUpdate
+    data class Failed(val reason: String) : BrandUpdate
+}
+
 class BrandRepository(private val context: Context) {
 
     private val localFile = File(context.filesDir, LOCAL_NAME)
@@ -33,8 +39,12 @@ class BrandRepository(private val context: Context) {
     }
 
     /** Zwraca nową bazę, jeśli zdalna wersja jest nowsza; null przy braku sieci lub braku zmian. */
-    suspend fun fetchUpdate(current: BrandDatabase): BrandDatabase? = withContext(Dispatchers.IO) {
-        runCatching {
+    suspend fun fetchUpdate(current: BrandDatabase): BrandDatabase? =
+        (checkForUpdate(current) as? BrandUpdate.Updated)?.database
+
+    /** Pełny wynik sprawdzenia — używany przy ręcznej aktualizacji z ekranu ustawień. */
+    suspend fun checkForUpdate(current: BrandDatabase): BrandUpdate = withContext(Dispatchers.IO) {
+        try {
             val connection = (URL(BuildConfig.BRANDS_URL).openConnection() as HttpURLConnection).apply {
                 connectTimeout = TIMEOUT_MS
                 readTimeout = TIMEOUT_MS
@@ -42,7 +52,7 @@ class BrandRepository(private val context: Context) {
             }
             try {
                 if (connection.responseCode != HttpURLConnection.HTTP_OK) {
-                    null
+                    BrandUpdate.Failed("Serwer zwrócił HTTP ${connection.responseCode}")
                 } else {
                     val text = connection.inputStream.bufferedReader().use { it.readText() }
                     val remote = BrandDatabase.parse(text)
@@ -53,15 +63,19 @@ class BrandRepository(private val context: Context) {
                             localFile.writeText(text)
                             tmp.delete()
                         }
-                        remote
+                        BrandUpdate.Updated(remote)
                     } else {
-                        null
+                        BrandUpdate.UpToDate(remote.version)
                     }
                 }
             } finally {
                 connection.disconnect()
             }
-        }.getOrNull()
+        } catch (e: java.io.IOException) {
+            BrandUpdate.Failed("Brak połączenia z internetem")
+        } catch (e: Exception) {
+            BrandUpdate.Failed("Błąd: ${e.message ?: e.javaClass.simpleName}")
+        }
     }
 
     private companion object {
