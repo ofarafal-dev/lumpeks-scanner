@@ -9,8 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Walidacja data/brands.json
+
+      - name: Walidacja data/brands.json (JSON, pola, opcjonalny "tip", aliasy)
         run: python .github/scripts/validate_brands.py data/brands.json
+
+      - name: Sprawdzenie podbicia "version" przy zmianie bazy
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if git cat-file -e "$BEFORE:data/brands.json" 2>/dev/null && ! git diff --quiet "$BEFORE" HEAD -- data/brands.json; then
+            OLD=$(git show "$BEFORE:data/brands.json" | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])' 2>/dev/null || echo 0)
+            NEW=$(python3 -c 'import json; print(json.load(open("data/brands.json"))["version"])')
+            if [ "$NEW" -le "$OLD" ]; then
+              echo "::error file=data/brands.json::Baza zmieniona, ale \"version\" ($NEW) nie jest większe niż poprzednio ($OLD) — telefony nie pobiorą zmian."
+              exit 1
+            fi
+            echo "OK: version $OLD -> $NEW"
+          else
+            echo "data/brands.json bez zmian — pomijam."
+          fi
