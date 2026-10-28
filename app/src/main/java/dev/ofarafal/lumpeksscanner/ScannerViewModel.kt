@@ -7,7 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import dev.ofarafal.lumpeksscanner.data.AppSettings
 import dev.ofarafal.lumpeksscanner.data.Brand
+import dev.ofarafal.lumpeksscanner.data.BrandUpdate
 import dev.ofarafal.lumpeksscanner.data.BrandDatabase
 import dev.ofarafal.lumpeksscanner.data.BrandRepository
 import dev.ofarafal.lumpeksscanner.match.BrandMatch
@@ -18,6 +20,7 @@ import dev.ofarafal.lumpeksscanner.ocr.OcrEngine
 import dev.ofarafal.lumpeksscanner.update.AppUpdate
 import dev.ofarafal.lumpeksscanner.update.AppUpdater
 import dev.ofarafal.lumpeksscanner.update.DownloadState
+import dev.ofarafal.lumpeksscanner.update.UpdateCheck
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,6 +48,7 @@ class ScannerViewModel(app: Application) : AndroidViewModel(app) {
     private val repository = BrandRepository(app)
     private val ocr = OcrEngine()
     private val updater = AppUpdater(app)
+    private val settings = AppSettings(app)
     private var downloadJob: Job? = null
 
     var database: BrandDatabase by mutableStateOf(repository.loadBest())
@@ -64,8 +68,22 @@ class ScannerViewModel(app: Application) : AndroidViewModel(app) {
     var downloadState: DownloadState? by mutableStateOf(null)
         private set
 
+    // --- Ekran ustawień ---
+    var showSettings: Boolean by mutableStateOf(false)
+        private set
+    var autoCheckUpdates: Boolean by mutableStateOf(settings.autoCheckUpdates)
+        private set
+    var appCheckInProgress: Boolean by mutableStateOf(false)
+        private set
+    var appCheckMessage: String? by mutableStateOf(null)
+        private set
+    var dbCheckInProgress: Boolean by mutableStateOf(false)
+        private set
+    var dbCheckMessage: String? by mutableStateOf(null)
+        private set
+
     init {
-        if (!BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG && settings.autoCheckUpdates) {
             viewModelScope.launch { availableUpdate = updater.check() }
         }
         viewModelScope.launch {
@@ -109,6 +127,60 @@ class ScannerViewModel(app: Application) : AndroidViewModel(app) {
 
     fun backToCamera() {
         state = UiState.Camera
+    }
+
+    fun openSettings() {
+        appCheckMessage = null
+        dbCheckMessage = null
+        showSettings = true
+    }
+
+    fun closeSettings() {
+        showSettings = false
+    }
+
+    fun setAutoCheck(enabled: Boolean) {
+        settings.autoCheckUpdates = enabled
+        autoCheckUpdates = enabled
+    }
+
+    /** Ręczne sprawdzenie aktualizacji aplikacji (działa też w buildzie debug). */
+    fun checkAppUpdateNow() {
+        if (appCheckInProgress) return
+        appCheckInProgress = true
+        appCheckMessage = null
+        viewModelScope.launch {
+            when (val result = updater.checkDetailed()) {
+                is UpdateCheck.Available -> {
+                    downloadState = null
+                    availableUpdate = result.update
+                    appCheckMessage = "Dostępna wersja ${result.update.versionName}"
+                }
+                is UpdateCheck.UpToDate ->
+                    appCheckMessage = "Masz najnowszą wersję (najnowszy build na GitHubie: ${result.latestBuild})"
+                is UpdateCheck.Failed -> appCheckMessage = "Nie udało się sprawdzić: ${result.reason}"
+            }
+            appCheckInProgress = false
+        }
+    }
+
+    /** Ręczna aktualizacja bazy marek. */
+    fun updateBrandsNow() {
+        if (dbCheckInProgress) return
+        dbCheckInProgress = true
+        dbCheckMessage = null
+        viewModelScope.launch {
+            dbCheckMessage = when (val result = repository.checkForUpdate(database)) {
+                is BrandUpdate.Updated -> {
+                    database = result.database
+                    matcher = BrandMatcher(result.database.brands)
+                    "Zaktualizowano do wersji ${result.database.version} (${result.database.brands.size} marek)"
+                }
+                is BrandUpdate.UpToDate -> "Baza jest aktualna (wersja na GitHubie: ${result.remoteVersion})"
+                is BrandUpdate.Failed -> "Nie udało się pobrać: ${result.reason}"
+            }
+            dbCheckInProgress = false
+        }
     }
 
     fun dismissUpdate() {
