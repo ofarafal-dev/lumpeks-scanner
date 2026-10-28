@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "updated": "2026-10-28",
   "brands": [
     {
@@ -11,6 +11,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Woskowane kurtki i pikówki, bardzo dobrze się sprzedają.",
+      "tip": "Najcenniejsze Beaufort/Bedale/Border z metką Made in England; sprawdź stan wosku.",
       "counterfeit_warning": true
     },
     {
@@ -23,6 +24,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Trencze i szaliki w kratę, wysoka cena odsprzedaży.",
+      "tip": "Trencze z kratą Nova Check w podszewce; Made in England = najlepsze.",
       "counterfeit_warning": true
     },
     {
@@ -55,6 +57,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Polówki z laurem i dresowe bluzy, pewna sprzedaż.",
+      "tip": "Polówki M12 i kurtki Harrington; Made in England = vintage plus.",
       "counterfeit_warning": false
     },
     {
@@ -101,6 +104,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Glany i półbuty, nawet używane mają wysoką cenę.",
+      "tip": "Made in England (linia Vintage) warte najwięcej; 1460/1461 schodzą zawsze.",
       "counterfeit_warning": false
     },
     {
@@ -112,6 +116,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Desert boots i wallabee, solidna skóra, dobry popyt.",
+      "tip": "Desert Boot i Wallabee; Made in England/Ireland = vintage plus.",
       "counterfeit_warning": false
     },
     {
@@ -122,6 +127,7 @@
       "country": "UK",
       "rating": "green",
       "note": "Kurtki outdoorowe i polary, sprawdź membranę i suwaki.",
+      "tip": "Kurtki Gore-Tex i polary vintage.",
       "counterfeit_warning": false
     },
     {
@@ -200,6 +206,7 @@
       "country": "UK",
       "rating": "yellow",
       "note": "Dobra przy wełnie i kaszmirze, poza tym przeciętna.",
+      "tip": "Bierz tylko kaszmir i wełnę (np. linia Autograph).",
       "counterfeit_warning": false
     },
     {
@@ -291,6 +298,7 @@
       "country": "FR",
       "rating": "green",
       "note": "Polówki z krokodylem, bardzo dobry popyt — sprawdź oryginalność.",
+      "tip": "Made in France = vintage; krokodyl wyszywany, nie naklejony.",
       "counterfeit_warning": true
     },
     {
@@ -442,6 +450,7 @@
       "country": "FR",
       "rating": "green",
       "note": "Bretońskie swetry marynarskie, bardzo trwałe.",
+      "tip": "Swetry z wełny Made in France — bardzo trwałe.",
       "counterfeit_warning": false
     },
     {
@@ -574,6 +583,7 @@
       "country": "FR",
       "rating": "yellow",
       "note": "Sprzęt sportowy, opłacalny tylko technicznie sprawny i czysty.",
+      "tip": "Tylko sprzęt techniczny w pełni sprawny i czysty.",
       "counterfeit_warning": false
     },
     {
@@ -668,6 +678,7 @@
       "country": "IT",
       "rating": "green",
       "note": "Płaszcze wełniane i kaszmirowe, bardzo wysoka cena odsprzedaży.",
+      "tip": "Płaszcze z wełny/kaszmiru (np. model 101801) — najwyższa cena.",
       "counterfeit_warning": false
     },
     {
@@ -808,6 +819,7 @@
       "country": "IT",
       "rating": "green",
       "note": "Kultowa marka z naszywką kompasu, bardzo wysoka cena — dużo podróbek.",
+      "tip": "Naszywka z kompasem na dwóch guzikach, metka z kodem — sprawdź uważnie.",
       "counterfeit_warning": true
     },
     {
@@ -829,6 +841,7 @@
       "country": "IT",
       "rating": "green",
       "note": "Kurtki puchowe premium, bardzo wysoka cena — najczęściej podrabiana.",
+      "tip": "Sprawdź etykietę z kodem QR/NFC i jakość puchu.",
       "counterfeit_warning": true
     },
     {
@@ -944,6 +957,7 @@
       "country": "IT",
       "rating": "yellow",
       "note": "Swetry wełniane bywają opłacalne, reszta przeciętna.",
+      "tip": "Swetry z wełny/merino z lat 80.–90. Made in Italy.",
       "counterfeit_warning": false
     },
     {
@@ -1112,6 +1126,7 @@
       "country": "DE",
       "rating": "green",
       "note": "Garnitury, koszule i płaszcze, bardzo dobry popyt.",
+      "tip": "Garnitury i płaszcze z wełny; Made in Germany = plus.",
       "counterfeit_warning": false
     },
     {
@@ -1135,6 +1150,7 @@
       "country": "DE",
       "rating": "yellow",
       "note": "Zależy od modelu: retro bluzy i kultowe buty tak, zwykły sport nie.",
+      "tip": "Bluzy vintage z trefoilem, Samba/Gazelle/Spezial.",
       "counterfeit_warning": true
     },
     {
@@ -1148,6 +1164,7 @@
       "country": "US",
       "rating": "green",
       "note": "Popularna marka, koszule i swetry dobrze się sprzedają.",
+      "tip": "Vintage z lat 90. z dużym logo flagi sprzedaje się najlepiej.",
       "counterfeit_warning": true
     },
     {
@@ -1160,6 +1177,7 @@
       "country": "US",
       "rating": "green",
       "note": "Jeansy 501 i vintage bardzo poszukiwane, sprawdź model.",
+      "tip": "Szukaj 501/505 i czerwonej metki z dużym „E” (vintage); Made in USA = plus.",
       "counterfeit_warning": true
     },
     {
@@ -1173,6 +1191,7 @@
       "country": "US",
       "rating": "green",
       "note": "Koszule, swetry i polówki, bardzo dobry popyt — dużo podróbek.",
+      "tip": "Bierz Polo/oxford i swetry warkoczowe; Made in USA/Italy = vintage, wyżej cenione.",
       "counterfeit_warning": true
     },
     {
@@ -1185,6 +1204,7 @@
       "country": "US",
       "rating": "yellow",
       "note": "Popularna, ale wartość zależy od linii i stanu.",
+      "tip": "Jeansy vintage z lat 90.; bielizna nie.",
       "counterfeit_warning": true
     },
     {
@@ -1195,6 +1215,7 @@
       "country": "US",
       "rating": "yellow",
       "note": "Zależy od modelu: vintage i kultowe buty tak, zwykły sport nie.",
+      "tip": "Bierz vintage z lat 80.–90., Air Max/Jordan; zwykły sport słabo.",
       "counterfeit_warning": true
     },
     {
@@ -1205,6 +1226,7 @@
       "country": "SE",
       "rating": "green",
       "note": "Koszule oxford i swetry, solidna sprzedaż.",
+      "tip": "Koszule oxford i swetry z wełny jagnięcej.",
       "counterfeit_warning": false
     },
     {
@@ -1215,6 +1237,7 @@
       "country": "SE",
       "rating": "green",
       "note": "Szwedzki outdoor premium, kurtki bardzo opłacalne.",
+      "tip": "Kurtki z membraną (Gore-Tex) — sprawdź suwaki i taśmy.",
       "counterfeit_warning": false
     },
     {
@@ -1239,6 +1262,7 @@
       "country": "ES",
       "rating": "yellow",
       "note": "Opłaca się tylko jak nowa lub modny fason sezonu.",
+      "tip": "Tylko z metkami albo modny fason z bieżącego sezonu.",
       "counterfeit_warning": false
     },
     {
